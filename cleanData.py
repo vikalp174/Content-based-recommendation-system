@@ -30,7 +30,7 @@ for key, desc in lowerCaseMatric:
 
 # removing punctuatins from tokenize docs
 # define punctuation
-punctuations = '''!()-[]{/};:'"\,<>./?@#$%^&*_~'''
+punctuations = '''!()-[]{/};:'"\,<>./?@#$%^&*_~='''
 pun_mat = []
 for key, val in TagFreeMatrics:
     st = ""
@@ -67,9 +67,9 @@ for key, val in without_stop_words:
 
 lamen_word.insert(0, ['id', ['description']])
 # converting back the list of description into string
-final_matrix=[]
-for key,val in lamen_word:
-    final_matrix.append([key," ".join(val)])
+final_matrix = []
+for key, val in lamen_word:
+    final_matrix.append([key, " ".join(val)])
 
 # saving the cleaned data into a csv file
 with open('contentBased recomendation system\project\cleaned_data.csv', 'w', newline='') as file:
