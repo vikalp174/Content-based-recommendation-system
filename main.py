@@ -1,8 +1,8 @@
 import csv
 import pandas as pd
-import term_friquency as tf
-import idf_calculate as idf
-import tf_idf_calculate as tf_idf
+from idf_tf_calculater import term_friquency as tf
+from idf_tf_calculater import idf_calculate as idf
+from idf_tf_calculater import tf_idf_calculate as tf_idf
 # loading cleaned data
 data = pd.read_csv('cleaned_data.csv')
 # changing pandas dataframe into list
@@ -32,3 +32,8 @@ tf_idf_matrix = tf_idf.tf_idf_cal(tf_matrix, idf_dic)
 with open('tf_idf_matrix.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerows(tf_idf_matrix)
+
+
+# print(pd.DataFrame(tf_idf_matrix))
+
+
