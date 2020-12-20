@@ -2,7 +2,7 @@ import csv
 import pandas as pd
 from idf_tf_calculater import term_friquency as tf
 from idf_tf_calculater import idf_calculate as idf
-from idf_tf_calculater import tf_idf_calculate as tf_idf
+from idf_tf_calculater import tf_idf_calculate as tf_m_idf
 # loading cleaned data
 data = pd.read_csv('cleaned_data.csv')
 # changing pandas dataframe into list
@@ -24,16 +24,24 @@ tf_matrix = tf.tF_cal(mat, uniqueWords)
 # claculating inverse document friquency
 idf_dic = idf.calcIDF(tf_matrix, uniqueWords)
 # calculating tf*idf
-tf_idf_matrix = tf_idf.tf_idf_cal(tf_matrix, idf_dic)
+tf_idf_matrix = tf_m_idf.tf_idf_cal(tf_matrix, idf_dic)
 
 
+# # saving the final metriz into a csv file
+# with open('tf_idf_matrix.csv', 'w', newline='') as file:
+#     writer = csv.writer(file)
+#     writer.writerows(tf_idf_matrix)
 
-# saving the final metriz into a csv file
-with open('tf_idf_matrix.csv', 'w', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerows(tf_idf_matrix)
 
+# # print(pd.DataFrame(tf_idf_matrix))
 
-# print(pd.DataFrame(tf_idf_matrix))
+# # converting list of dictionaries into list of list [[ids],[keys],[values of id1][values of id2],[values of id3].......[values of idn]]
+temps = []
+ids = []
+for id, dic in tf_idf_matrix:
+    temps.append(dic)
+    ids.append(id)
 
+new_tf_idf_matrix = [[key for key in temps[0].keys()],*[list(idx.values())for idx in temps]]
+new_tf_idf_matrix.insert(0, ids)
 
