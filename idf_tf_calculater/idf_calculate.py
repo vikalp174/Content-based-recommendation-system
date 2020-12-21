@@ -1,7 +1,7 @@
+import math
 def calcIDF(documents,uniqueWords):
     n = len(documents)
-    term_dic= dict.fromkeys(uniqueWords,0)
-    import math
+    term_dic= dict.fromkeys(uniqueWords,0)       
     for id , dic in documents:
         for key, val in dic.items():
             if val>0:
