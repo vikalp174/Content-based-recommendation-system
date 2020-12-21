@@ -1,8 +1,7 @@
 from math import sqrt
 
-
+#     calculating length of the vector |x|
 def square_rooted(x):
-
     return round(sqrt(sum([a*a for a in x])), 3)
 
 
