@@ -42,8 +42,7 @@ new_tf_idf_matrix.insert(0, ids)
 
 tf_m_idf_mat = new_tf_idf_matrix[2:]
 
-# print(len(tf_m_idf_mat))
-# calculating cocine similarity for the items
+# calculating cosine similarity for the items
 cosine_coefi_matrix = Cc.cosin_cal(ids, tf_m_idf_mat)
 id_cof_matrix=[]
 
@@ -52,10 +51,11 @@ for id, dic in cosine_coefi_matrix:
     ls = [[k,v] for k,v in dic.items()]
     id_cof_matrix.append([id,ls])
 
-# print(id_cof_matrix[10])  
-recomended = rec.recomend(id_cof_matrix[10], 5)
+# finally getting the recomendation for the given id
+id =11
+# number of recomendations
+num=5
+recomended = rec.recomend(id_cof_matrix[id-1], num)
+# final recomendation products id list
 print(recomended)
-# # saving the final metriz into a csv file
-# with open('new.txt', 'w', newline='') as file:
-#     writer = csv.writer(file)
-#     writer.writerows(id_cof_matrix)
+
